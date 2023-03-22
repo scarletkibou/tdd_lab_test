@@ -9,7 +9,7 @@ def get_name(name: str = None):
 
 
 @app.post("/callname")
-def post_name(name="jj"):
+def post_name(name="junior"):
     return {"hello": name}
 
 handler = Mangum(app)
