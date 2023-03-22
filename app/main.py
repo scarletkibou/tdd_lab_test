@@ -1,19 +1,15 @@
-from fastapi.testclient import TestClient
+from fastapi import FastAPI
+from mangum import Mangum
 
-from app.main import app
+app = FastAPI()
 
-client = TestClient(app)
+@app.get("/callname/{name}")
+def get_name(name: str = None):
+    return {"hello": name}
 
 
-def test_get_name_Theetach():
-    name= "Theetach"
-    url=f"/callname/{name}"
-    expected_result ={"hello" : name}
-    actual_result = client.get(url)
-    assert actual_result.status_code == 200
-    assert actual_result.json() == expected_result
-    
-def test_post_name_junior():
-    response = client.post("/callname")
-    assert response.status_code == 200
-    assert response.json() == {"hello" : "junior"}
+@app.post("/callname")
+def post_name(name="jj"):
+    return {"hello": name}
+
+handler = Mangum(app)
