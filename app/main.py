@@ -4,12 +4,12 @@ from mangum import Mangum
 app = FastAPI()
 
 @app.get("/callname/{name}")
-def get_name(name_id: int):
-    return {"hello": {__name__}}
+def get_name(name: str = None):
+    return {"hello": name}
 
 
 @app.post("/callname")
-def post_name():
-    return {"hello": {__name__}}
+def post_name(name="jj"):
+    return {"hello": name}
 
 handler = Mangum(app)
