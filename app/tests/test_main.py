@@ -13,7 +13,7 @@ def test_get_name_Theetach():
     assert actual_result.status_code == 200
     assert actual_result.json() == expected_result
     
-def test_post_name_junior():
+def test_post_name_jj():
     response = client.post("/callname")
     assert response.status_code == 200
-    assert response.json() == {"hello" : "junior"}
+    assert response.json() == {"hello" : "jj"}
